@@ -25,34 +25,43 @@ private void fillVendors(){
     vendors.put("2", ven2);
     vendors.put("3", ven3);
 
+    ven1.setCode("Vendor1");
+    ven2.setCode("Vendor2");
+    ven3.setCode("Vendor3");
+
 }
 
 public VendorService(){
-    fillVendors();
+   // fillVendors();
 }
 
 //Read all vendors - Returns an internal table
 public HashMap<String, Vendor> getAllVendor(){
+    fillVendors();
     return vendors;
 }
 
 //Read single vendor by KEY - READ TABLE itab WITH KEY
 public Vendor readVendorById(String vendorId){
+    fillVendors();
     return vendors.get(vendorId);
 }
 
 //Add new record to vendors - APPEND wa to itab
 public Vendor addVendor(Vendor newVendor){
+    fillVendors();
     vendors.put("4", newVendor);
     return newVendor;
 } 
 
 public Vendor updateVendorById(String vendorId, Vendor vendorData){
+    fillVendors();
     vendors.put(vendorId, vendorData);
     return vendorData;
 }
 
 public void deleteVendor(String vendorId){
+    fillVendors();
     vendors.remove(vendorId);
 }
 }

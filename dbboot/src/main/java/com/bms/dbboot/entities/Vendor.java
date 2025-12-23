@@ -1,21 +1,50 @@
-package bms.com.springmicroservice.entities;
+package com.bms.dbboot.entities;
 
 import java.util.Date;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Component;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Table;
 
 @Component
 @Scope("prototype")
+@Entity
+@Table(name = "VENDOR")
 public class Vendor {
+    
+@Id
+@Column(nullable = false, name = "ID")
+@GeneratedValue(generator = "uuid2")   
 private String code;
+
+@Column(nullable = false, name = "COMPANY_NAME")
 private String comapnyName;
+
+@Column(nullable = false, name = "CONTACT")
 private String contactPerson;
+
+@Column(nullable = false, name = "FIRST_NAME")
 private String firstName;
+
+@Column(nullable = false, name = "LAST_NAME")
 private String lastName;
+
+@Column(nullable = false, name = "WEBSITE")
 private String website;
+
+@Column(nullable = false, name = "EMAIL")
 private String email;
+
+@Column(nullable = false, name = "STATUS")
 private Integer status;
+
+@Column(nullable = false, name = "REG_DATE")
 private Date regDate;
 
 //Default constructor without arguments
