@@ -1,15 +1,21 @@
 package com.bms.dbboot.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Component
@@ -46,6 +52,13 @@ private Integer status;
 
 @Column(nullable = false, name = "REG_DATE")
 private Date regDate;
+
+//Create association with Address table
+@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+@JoinColumn(name = "vendor", referencedColumnName = "ID")
+private List<Address> addresses = new ArrayList<Address>();
+
+
 
 //Default constructor without arguments
 public Vendor() {
@@ -125,6 +138,14 @@ public Date getRegDate() {
 }
 public void setRegDate(Date regDate) {
     this.regDate = regDate;
+}
+
+public List<Address> getAddresses() {
+    return addresses;
+}
+
+public void setAddresses(List<Address> addresses) {
+    this.addresses = addresses;
 }
 
 }

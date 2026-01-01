@@ -1,6 +1,5 @@
 package com.bms.dbboot.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,13 +30,25 @@ public Vendor addVendor(Vendor newVendor){
     return vendorDB.save(newVendor);
 } 
 
+//update vendor by id
 public Vendor updateVendorById(String vendorId, Vendor vendorData){
     Optional<Vendor> vendorFound = vendorDB.findById(vendorId);
     return vendorDB.save(vendorData);
 }
 
+//delete vendor by id
 public String deleteVendor(String vendorId){
     vendorDB.deleteById(vendorId);
     return "Object was deleted";
+}
+
+//Search Vendor by Company Name
+public List<Vendor> getVendorByCompanyName(String companyName){
+    return vendorDB.findByComapnyName(companyName);
+}
+
+//Search Vendor by Email ID
+public List<Vendor> getVendorByEmailId(String emailId){
+    return vendorDB.findByEmailId(emailId);
 }
 }
