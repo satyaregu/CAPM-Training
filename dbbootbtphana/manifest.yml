@@ -1,0 +1,10 @@
+---
+applications:
+- name: dbbootbtphana
+  path: target/dbbootbtphana-0.0.1-SNAPSHOT.war
+  random-route: true
+  memory: 512M
+  buildpacks: 
+  - sap_java_buildpack
+  services:
+  - hanaschema
