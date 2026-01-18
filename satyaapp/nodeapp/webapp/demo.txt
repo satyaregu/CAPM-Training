@@ -1,0 +1,4 @@
+This is a demo text file.
+This is used to test the test file using the app.use function of the express module with whole folder.
+Using this stanard function we are eleminating the repeatated code for each end point
+and directly calling the folder with all types of files in it

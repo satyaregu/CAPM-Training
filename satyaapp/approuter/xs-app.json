@@ -1,0 +1,19 @@
+{
+    "welcomeFile": "ui/index.html",
+    "authenticationMethod": "route",
+    "routes": [
+        {
+            "source": "^/node",
+            "target": "/",
+            "destination": "nodeapp",
+            "authenticationType": "xsuaa"
+        },
+
+        {
+            "source": "^/ui/(.*)$",
+            "target": "$1",
+            "localDir": "webapp",
+            "authenticationType": "xsuaa"
+        }
+    ]
+}

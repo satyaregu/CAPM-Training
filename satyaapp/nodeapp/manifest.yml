@@ -1,0 +1,7 @@
+---
+applications:
+  - name: satyanodems
+    memory: 512M
+    buildpacks:
+      - nodejs_buildpack
+    random-route: true

@@ -1,0 +1,27 @@
+
+applications:
+- name: nodeapp
+  path: ./nodeapp
+  memory: 256M
+  routes: 
+    - route: https://nodeapp-satyaapp.cfapps.us10-001.hana.ondemand.com
+  services:
+  - ourxsuaa
+
+- name: approuter
+  path: ./approuter
+  memory: 256M
+  routes:
+    - route: https://approuter-satyaapp.cfapps.us10-001.hana.ondemand.com
+  services:
+  - ourxsuaa
+  env:
+    TENANT_HOST_PATTERN: 'approuter-satyaapp-(.*).cfapps.us10-001.hana.ondemand.com'
+    destinations: >
+      [
+        {
+          "name": "nodeapp",
+          "url": "https://nodeapp-satyaapp.cfapps.us10-001.hana.ondemand.com",
+          "forwardAuthToken": true
+        }
+      ]

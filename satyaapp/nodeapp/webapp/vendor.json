@@ -1,0 +1,31 @@
+{
+    "vendors" : [
+        {
+            "vendorId" : 100,
+            "vendorName" : "JK Suppliors",
+            "vendorType" : "L2",
+            "location" : "DL"
+        },
+
+        {
+            "vendorId" : 101,
+            "vendorName" : "MK Suppliors",
+            "vendorType" : "L1",
+            "location" : "BL"
+        },
+        
+        {
+            "vendorId" : 102,
+            "vendorName" : "Satya Enterprises",
+            "vendorType" : "L2",
+            "location" : "HY"
+        },   
+
+                {
+            "vendorId" : 103,
+            "vendorName" : "Jyothi Enterprises",
+            "vendorType" : "L3",
+            "location" : "MU"
+        }
+    ]
+}

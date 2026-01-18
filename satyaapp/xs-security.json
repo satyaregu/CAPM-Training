@@ -1,0 +1,40 @@
+{
+    "xsappname": "satyaapp",
+    "scopes":[
+        {
+            "name": "$XSAPPNAME.Display",
+            "description": "display"
+        },
+
+        {
+            "name": "$XSAPPNAME.Edit",
+            "description": "edit"
+        }
+    ],
+
+    "role-templates":[
+        {
+            "name": "Viewer",
+            "description": "Allow to view the OData Service",
+            "scope-references":[
+                "$XSAPPNAME.Display"
+            ]
+        },
+
+        {
+            "name": "Editor",
+            "description": "Access of Fiori App to edit the Data",
+            "scope-references":[
+                "$XSAPPNAME.Edit"
+            ]
+        }
+    ],
+
+    "authorities": ["$ACCEPT_GRANTED_AUTHORITIES"],
+    "oauth2-configuration": {
+        "token-validity": 9000,
+        "redirect-uris": ["https://*.cfapps.us10-001.hana.ondemand.com/login/callback"]
+    },
+
+    "xsenableasyncservice": "true"
+}
