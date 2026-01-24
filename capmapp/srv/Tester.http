@@ -1,0 +1,66 @@
+###Get the Service URL which you want to test
+http://localhost:4004/odata/v4/CatalogService
+
+###Get the Service Meta Data
+http://localhost:4004/odata/v4/CatalogService/$metadata
+
+###Get the Employee Data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+
+###Pagination - load the data chunk by chunk
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=2&$skip=2
+
+###Filtering of Data - WHERE condition
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=salaryAmount ge 10000
+
+###Counting the Records
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/$count
+
+###Get all stundent records
+http://localhost:4004/odata/v4/book/StudentSet
+
+###Get single record by id
+http://localhost:4004/odata/v4/book/StudentSet/1
+
+###POST - to create stundent record
+POST http://localhost:4004/odata/v4/book/StudentSet
+Content-Type: application/json
+
+{
+  "HOUSENO": null,
+  "STREET": "MG Road",
+  "CITY": "Hyderabad",
+  "COUNTRY": "IND",
+  "ID": "9",
+  "NAME": "Test Create",
+  "CLASS_ID": 5,
+  "GENDER": "M"
+}
+
+###GET - single record by key
+GET http://localhost:4004/odata/v4/book/StudentSet/1
+
+###PATCH - update studnent date
+PATCH http://localhost:4004/odata/v4/book/StudentSet/1
+Content-Type: application/json
+
+{
+  "CITY": "Pune"
+}
+
+### DELETE - delete the record
+DELETE http://localhost:4004/odata/v4/book/StudentSet/9
+
+### calling custom action boost which created in Student Set
+POST http://localhost:4004/odata/v4/book/StudentSet/1/CustomAction
+Content-Type: application/json
+
+{
+
+}
+
+### calling the custom function which is created in Student Set
+GET http://localhost:4004/odata/v4/book/StudentSet/1/CustomFunction()
+
+###Get single record by id
+http://localhost:4004/odata/v4/book/StudentSet/1
