@@ -64,3 +64,10 @@ GET http://localhost:4004/odata/v4/book/StudentSet/1/CustomFunction()
 
 ###Get single record by id
 http://localhost:4004/odata/v4/book/StudentSet/1
+
+
+###Get the lazy load with CDS View Association mixin
+GET http://localhost:4004/odata/v4/MyService/ProductOrderSet?$expand=ProductOrders
+
+###Get all stundent records with V2 ODATA service
+http://localhost:4004/odata/v2/book/StudentSet

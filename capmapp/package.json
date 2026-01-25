@@ -3,16 +3,25 @@
   "version": "1.0.0",
   "description": "A simple CAP project.",
   "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.15.8",
     "@sap/cds": "^9",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.7",
     "express": "^4"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^2"
+    "@cap-js/sqlite": "^2",
+    "cds-plugin-ui5": "^0.13.0"
   },
   "scripts": {
     "start": "cds-serve",
-    "Runmyapp" : "cds watch"  
-
+    "Runmyapp": "cds watch",
+    "watch-studentapp": "cds watch --open com.satya.studentapp/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
-  "private": true
+  "private": true,
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/studentapp"
+  ]
 }
