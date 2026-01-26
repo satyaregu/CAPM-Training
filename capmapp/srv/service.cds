@@ -8,7 +8,8 @@ using {
 service BookService {
 
     //Creating entity set
-    entity StudentSet   as projection on master.student
+    //Enabling draft functionality
+    entity StudentSet @(odata.draft.enabled: true)  as projection on master.student
 
         actions {
             //Creating the Bound Action - to update

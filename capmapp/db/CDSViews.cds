@@ -70,13 +70,13 @@ context CDSViews {
     //CDS View for PO Items
     define view ![ItemView] as
         select from transaction.poitems {
-            PARENT_KEY.NODE_KEY         as ![VendorId],
-            PRODUCT_GUID.NODE_KEY       as ![ProductId],
-            CURRENCY                    as ![Currency],
-            GROSS_AMOUNT                as ![GrossAmount],
-            NET_AMOUNT                  as ![NetAmount],
-            TAX_AMOUNT                  as ![TaxAmount],
-            PARENT_KEY.LIFECYCLE_STATUS as ![Status]
+                //  PARENT_KEY.NODE_KEY         as ![VendorId],
+            key PRODUCT_GUID.NODE_KEY       as ![ProductId],
+                CURRENCY                    as ![Currency],
+                GROSS_AMOUNT                as ![GrossAmount],
+                NET_AMOUNT                  as ![NetAmount],
+                TAX_AMOUNT                  as ![TaxAmount],
+                PARENT_KEY.LIFECYCLE_STATUS as ![Status]
         };
 
     //CDS View for Products with mixin - lazy loading

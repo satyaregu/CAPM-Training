@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "A simple CAP project.",
   "dependencies": {
+    "20": "^3.1.9",
     "@cap-js-community/odata-v2-adapter": "^1.15.8",
-    "@sap/cds": "^9",
+    "@cap-js/hana": "^2",
+    "@sap/cds": "^9.6.4",
     "@sap/cds-odata-v2-adapter-proxy": "^1.9.7",
-    "express": "^4"
+    "@sap/hana-client": "^2.27.23",
+    "express": "^4",
+    "npm": "^11.8.0",
+    "use": "^3.1.1"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",
@@ -15,13 +20,16 @@
   "scripts": {
     "start": "cds-serve",
     "Runmyapp": "cds watch",
-    "watch-studentapp": "cds watch --open com.satya.studentapp/index.html?sap-ui-xx-viewCache=false --livereload false"
+    "watch-studentapp": "cds watch --open com.satya.studentapp/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-purchaseorderapp": "cds watch --open com.satya.purchaseorderapp/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "workspaces": [
     "app/*"
   ],
   "sapux": [
-    "app/studentapp"
-  ]
+    "app/studentapp",
+    "app/purchaseorderapp"
+  ],
+  "cds": {}
 }
