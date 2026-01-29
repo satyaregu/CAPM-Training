@@ -6,12 +6,30 @@ using {
 } from '../db/data-model';
 
 //Creating the Service
-service CatalogService @(path: 'CatalogService') {
+service CatalogService @(
+    path    : 'CatalogService',
+    requires: 'authenticated-user' //adding security to this service
+) {
 
     //Creating the Entity Set for each table
     entity BusinessPartnerSet as projection on master.businesspartner;
     entity AddressSet         as projection on master.address;
-    entity EmployeeSet        as projection on master.employees;
+
+    entity EmployeeSet @(restrict: [
+        //Adding Read Access to only who has access to Viewer Role
+        {
+            grant: 'READ',
+            to   : 'Viewer',
+            where: 'bankName = $user.BankName' //Adding Row Level security based on the bankName field
+        },
+
+        //Adding Write Access to only who has access to Admin Role
+        {
+            grant: 'WRITE',
+            to   : 'Admin'
+        }
+    ])                        as projection on master.employees;
+
     entity ProductSet         as projection on master.product;
 
     //Defining the Unbound Function to get the default value for the Life Cycle Status Field

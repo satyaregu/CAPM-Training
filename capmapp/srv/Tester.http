@@ -71,3 +71,9 @@ GET http://localhost:4004/odata/v4/MyService/ProductOrderSet?$expand=ProductOrde
 
 ###Get all stundent records with V2 ODATA service
 http://localhost:4004/odata/v2/book/StudentSet
+
+###Testing security with mock users
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Authorization: Basic satya:
+
+

@@ -11,7 +11,8 @@
     "@sap/hana-client": "^2.27.23",
     "express": "^4",
     "npm": "^11.8.0",
-    "use": "^3.1.1"
+    "use": "^3.1.1",
+    "@sap/xssec": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",
@@ -31,5 +32,43 @@
     "app/studentapp",
     "app/purchaseorderapp"
   ],
-  "cds": {}
+  "cds": {
+    "requires": {
+      "db": "hana",
+      "uaa": {
+        "kind": "xsuaa"
+      },
+      "auth": {     
+        "[development]": {
+          "strategy": "mocked",
+          "users": {
+            "satya": {
+              "roles": [
+                "Viewer"
+              ],
+              "userAttributes": {
+                "BankName": [
+                  "SBI"
+                ]
+              }
+            },
+            "jyothi": {
+              "roles": [
+                "Viewer",
+                "Admin"
+              ],
+              "userAttributes": {
+                "BankName": [
+                  "$UNRESTRICTED"
+                ]
+              }
+            }
+          }
+        },
+        "[production]": {
+          "strategy": "JWT"
+        }
+      }
+    }
+  }
 }
