@@ -34,7 +34,7 @@ context master {
     //Third table for storing class information
     entity standards {
         key ID           : Int16;
-            CLASSNAME    : String(10);
+            CLASSNAME    : String(1000);
             SECTIONS     : Int16;
             CLASSTEACHER : String(80);
     }

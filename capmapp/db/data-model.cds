@@ -35,7 +35,7 @@ context master {
             POSTAL_CODE     : String(8);
             STREET          : String(44);
             BUILDING        : String(128);
-            COUNTRY         : String(44);
+            COUNTRY         : String(1000);
             ADDRESS_TYPE    : String(44);
             VAL_START_DATE  : Date;
             VAL_END_DATE    : Date;

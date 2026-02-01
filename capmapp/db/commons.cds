@@ -37,5 +37,5 @@ aspect address {
     HOUSENO : Int16;
     STREET  : String(32);
     CITY    : String(80);
-    COUNTRY : String(3);
+    COUNTRY : String(80);
 }

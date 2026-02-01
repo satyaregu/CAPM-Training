@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9",
     "cds-plugin-ui5": "^0.13.0"
   },
   "scripts": {
@@ -38,7 +39,7 @@
       "uaa": {
         "kind": "xsuaa"
       },
-      "auth": {     
+      "auth": {
         "[development]": {
           "strategy": "mocked",
           "users": {
