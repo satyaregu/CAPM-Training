@@ -1,5 +1,5 @@
 _schema-version: 3.3.0
-ID: capmapp
+ID: s4hana-so-app
 version: 1.0.0
 description: "A simple CAP project."
 parameters:
@@ -11,7 +11,7 @@ build-parameters:
         - npm ci
         - npx cds build --production
 modules:
-  - name: capmapp-srv
+  - name: s4hana-so-app-srv
     type: nodejs
     path: gen/srv
     parameters:
@@ -24,16 +24,8 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
-      - name: capmapp-db
-
-  - name: capmapp-db-deployer
-    type: hdb
-    path: gen/db
-    parameters:
-      buildpack: nodejs_buildpack
-    requires:
-      - name: capmapp-db
-  - name: capmapp
+      - name: s4hana-so-app-auth
+  - name: s4hana-so-app
     type: approuter.nodejs
     path: app/
     parameters:
@@ -47,28 +39,28 @@ modules:
           name: srv-api # must be used in xs-app.json as well
           url: ~{srv-url}
           forwardAuthToken: true
+      - name: s4hana-so-app-auth
     provides:
       - name: app-api
         properties:
           app-protocol: ${protocol}
           app-uri: ${default-uri}
-    
-  - name: my-cap-srv 
-    type: nodejs 
-    path: srv 
-    requires: 
-    - name: my-uaa-service  
 
 resources:
-  - name: capmapp-db
-    type: com.sap.xs.hdi-container
-    parameters:
-      service: hana
-      service-plan: hdi-shared
-
-  - name: my-uaa-service
+  - name: s4hana-so-app-auth
     type: org.cloudfoundry.managed-service
     parameters:
       service: xsuaa
       service-plan: application
       path: ./xs-security.json
+      config:
+        xsappname: s4hana-so-app-${org}-${space}
+        tenant-mode: dedicated
+        oauth2-configuration:
+          credential-types:
+            - "binding-secret"
+            - "x509"
+          redirect-uris:
+            - https://*~{app-api/app-uri}/**
+    requires:
+      - name: app-api
